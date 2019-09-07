@@ -1,8 +1,7 @@
 require_relative 'test_helper'
 
 describe "DateRange class" do
-  describe "#initialize method" do
-    
+  describe "#initialize method" do 
     it "can be initialized with two dates" do
       date_range = DateRange.new('2019-12-01', '2019-12-04')
 

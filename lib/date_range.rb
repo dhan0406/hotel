@@ -20,5 +20,4 @@ class DateRange
   def range
     return (@in_date..@out_date).to_a
   end
-
 end
