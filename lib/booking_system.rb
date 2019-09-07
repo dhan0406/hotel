@@ -10,35 +10,6 @@ class BookingSystem
     @rooms = [*1..20]
   end
 
-  # given the valid date range, can create an instance of reservation by assigning first available room to reservation
-  
-
-  def make_reservation(room, date_range)
-    reservation = Reservation.new(room: room, date_range: date_range)
-    @reservations << reservation
-
-
-    # if 'room' is not included in the list of 'available rooms', raise an error
-  else
-    # create a reservation with given
-
-  
-
-  end
-
-  def find_available_room(date_range)
-    # if #date_range.overlap? returns false, create a Reservation by assigning a room 
-     
-  end
-
-  def list_reservations(date)
-    @reservations.each do |reservation|
-      if reservation.date_range.range.include?(date)
-        return reservation
-      end
-    end
-  end
-
   def list_available_rooms(date_range)
     available_rooms = rooms.clone
 
@@ -51,4 +22,25 @@ class BookingSystem
       return available_rooms
     end
   end
+  
+  def make_reservation(room, date_range)
+    # if 'room' is in the 'list of available rooms', create a reservation, else raise Error
+
+    if self.list_available_rooms(date_range).include?(room)
+
+    reservation = Reservation.new(room: room, date_range: date_range)
+    @reservations << reservation
+    else
+      raise ArgumentError "Error! That room is unavailable."
+    end
+  end
+
+  def list_reservations(date)
+    @reservations.each do |reservation|
+      if reservation.date_range.range.include?(date)
+        return reservation
+      end
+    end
+  end
+
 end

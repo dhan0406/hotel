@@ -18,7 +18,6 @@ describe "Reservation class" do
     end
 
     it "raises an ArgumentError if the system tries to reserve an invalid room" do
-
       proc{ Reservation.new(room: 21)}.must_raise ArgumentError
     end
   end
