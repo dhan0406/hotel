@@ -10,7 +10,7 @@ describe "Reservation class" do
     end
 
     it "is an instance of Reservation" do
-      expect(@reservation).must_be_instance_of Reservation
+      expect(@reservation).must_be_kind_of Reservation
     end
     
     it "has a valid room number" do

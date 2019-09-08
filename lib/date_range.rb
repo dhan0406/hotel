@@ -1,5 +1,4 @@
 require 'date'
-require 'pry'
 
 class DateRange
   attr_reader :in_date, :out_date
