@@ -1,0 +1,6 @@
+In that file, make a short list of the changes that you could make, such as naming conventions, etc.
+- make sure that I'm practicing the single responsibility principle 
+- create a 'factory class' to create less dependencies between classes
+- create a room and block class (wave 3)
+- wrap the classes in a module
+- build a CLI
