@@ -18,20 +18,17 @@ class BookingSystem
 
       available_rooms.delete(reservation.room)
       end
-      
-      return available_rooms
     end
+    return available_rooms
   end
   
   def make_reservation(room, date_range)
-    # if 'room' is in the 'list of available rooms', create a reservation, else raise Error
-
     if self.list_available_rooms(date_range).include?(room)
 
     reservation = Reservation.new(room: room, date_range: date_range)
     @reservations << reservation
     else
-      raise ArgumentError "Error! That room is unavailable."
+      raise ArgumentError.new "Error! That room is unavailable."
     end
   end
 

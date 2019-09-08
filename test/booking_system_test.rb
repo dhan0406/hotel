@@ -26,12 +26,12 @@ describe "BookingSystem class" do
     end
 
 
-    it "will raise an error if if tries to book a room that's unavailable" do
+    it "will raise an error if it tries to book a room that's unavailable" do
       @new_booking_system.make_reservation(1, DateRange.new('2019-12-01', '2019-12-04'))
 
-      new_reservation = @new_booking_system.make_reservation(1, DateRange.new('2019-12-01', '2019-12-03'))
+      # new_reservation = @new_booking_system.make_reservation(1, DateRange.new('2019-12-01', '2019-12-03'))
 
-      proc{(new_reservation)}.must_raise ArgumentError
+      proc{(@new_booking_system.make_reservation(1, DateRange.new('2019-12-01', '2019-12-03')))}.must_raise ArgumentError
     end
 
   end
