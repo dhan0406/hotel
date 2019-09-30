@@ -33,5 +33,6 @@ Which implementation better adheres to the single responsibility principle?
 
 Hotel improvements:
   A place where I can implement change is to add a #overlap method in the DateRange class and calling that method in BookingSystem class to check if the given date range overlaps with any previously made reservations.
+  However, I realized that some of my tests are now failing and I couldn't figure out where and how to make changes to make the #overlap method work.
 
 
