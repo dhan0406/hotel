@@ -19,4 +19,9 @@ class DateRange
   def range
     return (@in_date..@out_date).to_a
   end
+
+  #if given dates overlap, return true 
+  def overlap(dates)
+    (out_date <= dates.in_date || in_date >= dates.out_date)
+  end
 end

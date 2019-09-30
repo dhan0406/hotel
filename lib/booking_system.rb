@@ -10,11 +10,12 @@ class BookingSystem
     @rooms = [*1..20]
   end
 
-  def list_available_rooms(date_range)
+  def list_available_rooms(in_date, out_date)
     available_rooms = rooms.clone
+    dates = DateRange.new(in_date, out_date)
 
     @reservations.each do |reservation|
-      unless ((date_range.out_date <= reservation.date_range.in_date || date_range.in_date >= reservation.date_range.out_date))
+      if reservation.overlap(dates)
 
       available_rooms.delete(reservation.room)
       end
@@ -22,10 +23,12 @@ class BookingSystem
     return available_rooms
   end
   
-  def make_reservation(room, date_range)
-    if self.list_available_rooms(date_range).include?(room)
+  def make_reservation(room, in_date, out_date)
+    dates = DateRange.new(in_date, out_date)
 
-    reservation = Reservation.new(room: room, date_range: date_range)
+    if self.list_available_rooms(in_date, out_date).include?(room)
+
+    reservation = Reservation.new(room: room, date_range: dates)
     @reservations << reservation
     else
       raise ArgumentError.new "Error! That room is unavailable."
@@ -33,11 +36,13 @@ class BookingSystem
   end
 
   def list_reservations(date)
+    list_reservations = []
     @reservations.each do |reservation|
       if reservation.date_range.range.include?(date)
-        return reservation
+        list_reservations << reservation
       end
     end
+    return list_reservations
   end
 
 end
